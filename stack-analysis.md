@@ -22,6 +22,15 @@
 - Enables code sharing between platforms
 - Hot reload development support
 
+### GTK (Desktop UI Framework)
+- Native GTK bindings via Deno FFI
+- Low-level access to GTK widgets through FFI calls
+- Direct memory management and native API access
+- High-performance C-level integration
+- System-native GTK4/libadwaita implementation
+- Zero-overhead TypeScript-to-GTK bridge
+- Custom FFI type definitions for TypeScript
+
 ### ANTLR4 (Parser Generator)
 - Parser generator for reading, processing, and executing structured text
 - Creates lexers and parsers from grammatical descriptions
@@ -36,8 +45,11 @@ graph TD
     A[TypeScript Source] --> B[ANTLR4 Lexer/Parser]
     B --> C[Abstract Syntax Tree]
     C --> D{Platform Target}
-    D --> E[Deno/Desktop]
+    D --> E[Desktop Stack]
     D --> F[NativeScript/Mobile]
+    E --> G[Deno Runtime]
+    G --> H[FFI Bridge]
+    H --> I[GTK Native Layer]
 ```
 
 ## ANTLR4 Integration
@@ -55,17 +67,24 @@ ANTLR4 serves as the parsing foundation in this stack, providing several key ben
    - Language-agnostic tree representation
 
 3. **Development Workflow**
-   ```
-   TypeScript Source
-   ↓
-   ANTLR4 Processing
-   ↓
-   AST Generation
-   ↓
-   Platform-Specific Transformation
-   ↓
-   Target Runtime (Deno/NativeScript)
-   ```
+
+```mermaid
+graph TD
+    A[TypeScript Source] --> B{Processing Path}
+    B -->|Parser Path| C[ANTLR4 Processing]
+    B -->|Direct Path| G[Platform-Specific Code]
+    C --> D[AST Generation]
+    D --> E[AST Transformation]
+    E --> F[Generated Code]
+    F --> G
+    G --> H{Target Runtime}
+    H --> I[Deno + GTK/FFI]
+    H --> J[NativeScript Mobile]
+```
+
+This workflow shows two paths:
+1. Parser Path: Through ANTLR4 for code requiring parsing/transformation
+2. Direct Path: Bypassing ANTLR4 for straightforward platform code
 
 ## Stack Benefits
 
@@ -76,7 +95,8 @@ ANTLR4 serves as the parsing foundation in this stack, providing several key ben
 
 2. **Development Experience**
    - Modern JavaScript features via TypeScript
-   - Deno's built-in tooling
+   - Deno's built-in tooling and FFI capabilities
+   - Direct GTK integration through FFI
    - NativeScript's hot reload
    - ANTLR4's robust parsing capabilities
 
@@ -84,6 +104,8 @@ ANTLR4 serves as the parsing foundation in this stack, providing several key ben
    - Shared business logic
    - Consistent parsing behavior
    - Native performance on all platforms
+   - GTK native desktop experience
+   - Unified UI/UX patterns
 
 ## Considerations
 
@@ -94,6 +116,8 @@ ANTLR4 serves as the parsing foundation in this stack, providing several key ben
 
 2. **Development Setup**
    - ANTLR4 grammar development
+   - FFI bindings maintenance
+   - GTK version compatibility
    - Platform-specific debugging
    - Testing across environments
 
@@ -209,6 +233,7 @@ This stack provides a robust foundation for cross-platform development:
 
 - TypeScript ensures type safety and modern development features
 - Deno offers a secure and modern desktop runtime
+- GTK delivers native desktop UI capabilities
 - NativeScript enables native mobile development
 - ANTLR4 provides the parsing infrastructure for consistent code processing
 
