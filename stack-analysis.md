@@ -27,7 +27,8 @@
 - Low-level access to GTK widgets through FFI calls
 - Direct memory management and native API access
 - High-performance C-level integration
-- System-native GTK4/libadwaita implementation
+- Direct FFI calls to system GTK4 libraries
+- Integration with GNOME's libadwaita for modern UI
 - Zero-overhead TypeScript-to-GTK bridge
 - Custom FFI type definitions for TypeScript
 
