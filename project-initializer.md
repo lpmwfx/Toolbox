@@ -1,4 +1,8 @@
 # Project Initializer Automation Script Proposal
+https://github.com/lpmwfx/Toolbox
+Author: TwistedBrain
+No email
+No phone
 
 ## Overview
 

@@ -8,17 +8,22 @@ system:
           - libadwaita-1
           - pkg-config
           - build-essential
+          - webkit2gtk-4.1
+          - libappindicator3
     - macos:  # Supported through homebrew
         packages:
           - gtk4
           - libadwaita
           - pkg-config
+          - webkit2gtk
+          - libappindicator
 
 runtime:
   desktop:
     - deno: "^1.37.0"
     - gtk4: ">=4.0.0"
     - libadwaita: ">=1.0.0"
+    - tauri: "^2.0.0"
     
   mobile:
     - nativescript: "^8.0.0"
@@ -32,6 +37,7 @@ development:
   tools:
     - antlr4: "^4.13.0"
     - antlr4-typescript-target: "^1.0.0"
+    - @tauri-apps/cli: "^2.0.0"
     
   ide_extensions:
     - "antlr4.grammar-editor"
@@ -76,6 +82,7 @@ build:
     - deno compile
     - ffi type generation
     - gtk resource bundling
+    - tauri build
   
   mobile:
     - nativescript build

@@ -32,6 +32,16 @@
 - Zero-overhead TypeScript-to-GTK bridge
 - Custom FFI type definitions for TypeScript
 
+### Tauri (Desktop Application Framework)
+- Secure desktop application framework
+- Web frontend with native backend capabilities
+- Rust core for performance and security
+- WebView-based UI rendering
+- Native system API access through Rust
+- Cross-platform support (Windows, macOS, Linux)
+- Small binary sizes and fast startup times
+- Built-in auto-updater and system tray support
+
 ### ANTLR4 (Parser Generator)
 - Parser generator for reading, processing, and executing structured text
 - Creates lexers and parsers from grammatical descriptions
@@ -49,8 +59,11 @@ graph TD
     D --> E[Desktop Stack]
     D --> F[NativeScript/Mobile]
     E --> G[Deno Runtime]
-    G --> H[FFI Bridge]
+    G --> H{Desktop Framework}
     H --> I[GTK Native Layer]
+    H --> J[Tauri Backend]
+    I --> K[GTK UI]
+    J --> L[WebView UI]
 ```
 
 ## ANTLR4 Integration
@@ -100,6 +113,10 @@ This workflow shows two paths:
    - Direct GTK integration through FFI
    - NativeScript's hot reload
    - ANTLR4's robust parsing capabilities
+   - Tauri's web-based UI development
+   - Rust backend for native system integration
+   - Cross-platform build system
+   - Built-in auto-updater support
 
 3. **Cross-Platform Consistency**
    - Shared business logic
